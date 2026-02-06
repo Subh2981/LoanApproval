@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinRisk Analyzer - Loan Approval System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <h1>FinRisk Analyzer</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Smart Loan Approval System</h2>
+                <p>Get instant loan approval decisions powered by advanced analytics</p>
+                <div class="hero-features">
+                    <div class="feature-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>Instant</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Accurate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Loan Application Form</h3>
+                    <p>Please fill in your details to check loan eligibility</p>
+                </div>
+
+                {% if prdicted %}
+                <div class="result-banner {% if 'Approved' == prdicted %}success{% else %}error{% endif %}">
+                    <i class="fas {% if 'Approved' == prdicted %}fa-check-circle{% else %}fa-times-circle{% endif %}"></i>
+                    <div class="result-text">
+                        <h4>Application Status</h4>
+                        <p>{{ prdicted }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <form action="{{ url_for('index') }}" method="POST" id="loanForm">
+                    <!-- Personal Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-user"></i>
+                        <h4>Personal Information</h4>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-calendar-alt"></i>
+                                Age
+                            </label>
+                            <input type="number" id="age" name="age" placeholder="Enter your age" required min="18" max="100">
+                            <span class="error-message" id="age-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-venus-mars"></i>
+                                Gender
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="Gender" value="Male" required>
+                                    <span class="radio-custom"></span>
+                                    Male
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="Gender" value="Female" required>
+                                    <span class="radio-custom"></span>
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="income">
+                                <i class="fas fa-dollar-sign"></i>
+                                Annual Income
+                            </label>
+                            <input type="number" id="income" name="income" placeholder="Enter your annual income" required min="0">
+                            <span class="error-message" id="income-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exp">
+                                <i class="fas fa-briefcase"></i>
+                                Employment Experience (years)
+                            </label>
+                            <input type="number" id="exp" name="exp" placeholder="Years of experience" required min="0" max="50">
+                            <span class="error-message" id="exp-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="own">
+                                <i class="fas fa-home"></i>
+                                Home Ownership
+                            </label>
+                            <select name="own" id="own" required>
+                                <option value="" disabled selected>Select ownership type</option>
+                                <option value="RENT">Rent</option>
+                                <option value="OWN">Own</option>
+                                <option value="MORTGAGE">Mortgage</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="credit_score">
+                                <i class="fas fa-star"></i>
+                                Credit Score
+                            </label>
+                            <input type="number" id="credit_score" name="credit_score" placeholder="Enter credit score" required min="300" max="850">
+                            <span class="error-message" id="credit-error"></span>
+                        </div>
+                    </div>
+
+                    <!-- Loan Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-money-check-alt"></i>
+                        <h4>Loan Information</h4>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="loan_amnt">
+                                <i class="fas fa-coins"></i>
+                                Loan Amount
+                            </label>
+                            <input type="number" id="loan_amnt" name="loan_amnt" placeholder="Enter loan amount" required min="0">
+                            <span class="error-message" id="loan-amnt-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loan_int_rate">
+                                <i class="fas fa-percentage"></i>
+                                Interest Rate (%)
+                            </label>
+                            <input type="number" id="loan_int_rate" name="loan_int_rate" placeholder="Enter interest rate" required min="0" max="100" step="0.01">
+                            <span class="error-message" id="rate-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loan">
+                                <i class="fas fa-bullseye"></i>
+                                Loan Intent
+                            </label>
+                            <select name="loan" id="loan" required>
+                                <option value="" disabled selected>Select loan purpose</option>
+                                <option value="PERSONAL">Personal</option>
+                                <option value="EDUCATION">Education</option>
+                                <option value="MEDICAL">Medical</option>
+                                <option value="VENTURE">Venture</option>
+                                <option value="HOMEIMPROVEMENT">Home Improvement</option>
+                                <option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prev">
+                                <i class="fas fa-history"></i>
+                                Previous Loan Defaults
+                            </label>
+                            <select name="prev" id="prev" required>
+                                <option value="" disabled selected>Any previous defaults?</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="resetBtn">
+                            <i class="fas fa-redo"></i>
+                            Reset
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FinRisk Analyzer</h4>
+                    <p>Empowering financial decisions with AI-driven insights</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">FAQs</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="067573767669747246606f68746f756d2865696b">[email&#160;protected]</a></p>
+                    <p><i class="fas fa-phone"></i> 1-800-FINRISK</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FinRisk Analyzer. All rights reserved.</p>
+            </div>
+         </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Direct Reset Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            
+            const resetBtn = document.getElementById('resetBtn');
+            console.log('Reset button:', resetBtn);
+            
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    console.log('RESET BUTTON CLICKED!');
+                    
+                    // Remove result banner
+                    const banner = document.querySelector('.result-banner');
+                    if (banner) {
+                        console.log('Removing banner...');
+                        banner.remove();
+                    }
+                    
+                    // Reset form
+                    document.getElementById('loanForm').reset();
+                    
+                    // Clear errors
+                    document.querySelectorAll('.form-group.error').forEach(el => {
+                        el.classList.remove('error');
+                    });
+                    
+                    // Remove dynamic elements
+                    ['.ratio-display', '.credit-indicator', '.intent-tooltip'].forEach(sel => {
+                        const el = document.querySelector(sel);
+                        if (el) el.remove();
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
