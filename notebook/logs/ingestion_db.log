@@ -1,0 +1,44 @@
+2026-01-19 12:43:58,251-INFO-Ingesting Heart_Disease_Prediction.csv
+2026-01-19 12:44:48,169-INFO-Ingesting Heart_Disease_Prediction.csv
+2026-01-19 12:48:31,363-INFO-Ingesting Heart_Disease_Prediction.csv
+2026-01-19 12:50:02,954-INFO-Ingesting Heart_Disease_Prediction.csv
+2026-01-19 12:50:03,050-INFO-------------Ingestion complete----------
+2026-01-19 12:50:03,050-INFO-
+ Totsl Time Taken: 0.0016465266545613608 minutes
+2026-01-19 13:08:10,375-DEBUG-Using selector: SelectSelector
+2026-01-19 13:08:10,386-ERROR-No such comm target registered: jupyter.widget.control
+2026-01-19 13:08:10,390-WARNING-No such comm: b5e1eb8d-e403-4773-b184-6915be9d06c6
+2026-01-19 13:08:10,403-DEBUG-Current comms: []
+2026-01-19 13:08:13,658-INFO-Ingesting diabetes.csv
+2026-01-19 13:08:13,725-INFO-------------Ingestion complete----------
+2026-01-19 13:08:13,726-INFO-
+ Totsl Time Taken: 0.001181328296661377 minutes
+2026-01-19 13:22:08,585-INFO-Ingesting house_prices_practice.csv
+2026-01-19 13:23:38,039-INFO-Ingesting house_prices_practice.csv
+2026-01-19 13:23:38,080-INFO-------------Ingestion complete----------
+2026-01-19 13:23:38,080-INFO-
+ Totsl Time Taken: 0.0007059693336486817 minutes
+2026-01-19 13:28:34,861-INFO-Ingesting data.csv
+2026-01-19 13:28:35,109-INFO-------------Ingestion complete----------
+2026-01-19 13:28:35,109-INFO-
+ Totsl Time Taken: 0.004353924592336019 minutes
+2026-01-19 13:54:43,650-DEBUG-Using selector: SelectSelector
+2026-01-19 13:54:43,651-ERROR-No such comm target registered: jupyter.widget.control
+2026-01-19 13:54:43,653-WARNING-No such comm: 3f31c634-78bf-4df7-b686-0e6e36b665a1
+2026-01-19 13:54:43,661-DEBUG-Current comms: []
+2026-01-19 14:01:15,559-DEBUG-Using selector: SelectSelector
+2026-01-19 14:01:15,574-ERROR-No such comm target registered: jupyter.widget.control
+2026-01-19 14:01:15,576-WARNING-No such comm: bbb64f57-b6e8-47e9-9e1b-f999d07362f0
+2026-01-19 14:01:15,577-DEBUG-Current comms: []
+2026-01-19 14:02:21,965-INFO-Ingesting credit_score.csv
+2026-01-19 14:02:22,070-INFO-------------Ingestion complete----------
+2026-01-19 14:02:22,070-INFO-
+ Totsl Time Taken: 0.0018897811571756999 minutes
+2026-01-25 11:16:41,424-INFO-Ingesting loan_data.csv
+2026-01-25 11:16:42,995-INFO-------------Ingestion complete----------
+2026-01-25 11:16:42,995-INFO-
+ Totsl Time Taken: 0.02707149585088094 minutes
+2026-01-25 11:19:02,976-INFO-Ingesting loan_data.csv
+2026-01-25 11:19:04,499-INFO-------------Ingestion complete----------
+2026-01-25 11:19:04,499-INFO-
+ Totsl Time Taken: 0.026319468021392824 minutes
